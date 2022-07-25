@@ -11,7 +11,7 @@ $routes = [
         '/' => 'app/views/homepage.php',
         '/home' => 'app/views/homepage.php',
         '/contact' => 'app/views/contact.php',
-        '/exo10' => 'app/views/exos/10-mvc.php',
+        '/hikes' => 'app/views/hikes.php'
     ],
     // Routes de la méthode POST
     'POST' => [
