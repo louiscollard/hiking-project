@@ -1,42 +1,33 @@
 <?php
 
-/*
-try {
-        //prepare() is a PDO method to make sure that our query is not subject to a SQL inject.
-        //this returns a PDOStatement object
-        $q = $db->prepare("SELECT productName, productCode FROM products");
+declare(strict_types=1);
 
-        //To execute the query set into $q (PDOStatement) object
-        $q->execute();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    } catch(Exception $e) {
-        echo $e->getMessage();
-        exit;
-}
-
-// PDO::FETCH_ASSOC to display only the columns as keys in the array returned
-$products = $q->fetchAll(PDO::FETCH_ASSOC);
-*/
+include_once ("/application/app/models/database_connection.php");
+include_once ("/application/app/models/database_hikes.php");
 include "includes/header.php";
 ?>
 
 <h1>Hikes</h1>
 
-    <ol>
-        <?php
-        //display the datas
-        foreach($products as $product) : ?>
+<?php
 
-            <li>
-                <a href="product.php?code=<?php echo $product["productCode"]; ?>">
-                    <h3><?php echo $product["productName"];?></h3>
-                </a>
-            </li>
+$object = new databaseHikes();
+echo $object->getAllHikes("Name");
+echo "</br>";
+echo "</br>";
+echo $object->getAllHikes("Duration");
+echo "</br>";
+echo "</br>";
+echo $object->getAllHikes("Distance");
+echo "</br>";
+echo "</br>";
+echo $object->getAllHikes("CreationDate");
 
-        <?php
-        endforeach;
-        ?>
-    </ol>
+?>
 
 <?php
 include "includes/footer.php";
