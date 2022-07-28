@@ -16,16 +16,13 @@ include "includes/header.php";
 <?php
 
 $object = new databaseHikes();
-echo $object->getAllHikes("Name");
+echo $object->getAllHikes();
 echo "</br>";
-echo "</br>";
-echo $object->getAllHikes("Duration");
-echo "</br>";
-echo "</br>";
-echo $object->getAllHikes("Distance");
-echo "</br>";
-echo "</br>";
-echo $object->getAllHikes("CreationDate");
+$object2 = new databaseHikes();
+$object->getOneHike(1);
+$object->getOneHike(2);
+$object->getOneHike(3);
+
 
 ?>
 
