@@ -6,14 +6,20 @@ class databaseHikes extends databaseConnection
 {
     public function getAllHikes()
     {
-        $statement = $this->getDatabase()->query("SELECT * FROM Hikes");
+        $statement = $this->getDatabase()->query("SELECT * FROM hikes");
+        $hikes =[];
         while($row = $statement->fetch()) {
-            echo "Name of hike : " . $row["Name"] . "</br>";
-            echo "Date of hike : " .$row["CreationDate"] . "</br>";
-            echo "Distance of hike : " .$row["Distance"]. " km" ."</br>";
-            echo "Duration of hike : " .$row["Duration"]. " min" . "</br>";
-            echo "Elevation of hike : " .$row["Elevation_gain"]. " m" . "</br>";
+            $hike = [
+                "Name" => $row["name"],
+                "Description" => $row["description"],
+                "CreationDate" => $row["creation_date"],
+                "Distance" => $row["distance"],
+                "Duration" => $row["duration"],
+                "Elevation" => $row["elevation_gain"]
+            ];
+            $hikes[] = $hike;
         }
+        return $hikes;
     }
     public function getOneHike($hikeId)
     {
