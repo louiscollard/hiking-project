@@ -10,6 +10,7 @@ class databaseConnection
 
     public function getDatabase()
     {
+       
         $this->host = "188.166.24.55";
         $this->db = "jepsen6-laravel";
         $this->login = "laravel";
@@ -30,4 +31,5 @@ class databaseConnection
             exit;
         }
     }
+   
 }
