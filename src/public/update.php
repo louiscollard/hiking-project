@@ -1,37 +1,40 @@
 
 <?php
-if(isset($_REQUEST['btn_add'])) //button name "btn_register"
+if(isset($_REQUEST['btn_update'])) //button name "btn_register"
 {
-	$servername = "188.166.24.55";
-	$username = "laravel";
-	$password = "5E3tYVTm6OJcxbHh";
-	$dbname = "jepsen6-laravel";
-	
-	try {
-		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username,
-			$password);
-	// set the PDO error mode to exception
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	// prepare sql and bind parameters
-		$stmt = $conn->prepare("INSERT INTO hikes (name, distance, 
-	duration) 
-	VALUES (:name, :distance, :duration)");
-		$stmt->bindParam(':name', $name);
-		$stmt->bindParam(':distance', $distance);
-		$stmt->bindParam(':duration', $duration);
-	
-	// insert a row
-		$name = $_POST["name"];
-		$distance = $_POST["distance"];
-		$duration = $_POST["duration"];
-		$stmt->execute();
-		echo "New records created successfully";
-	}
-	catch(PDOException $e)
-	{
-		echo "Error: " . $e->getMessage();
-	}
+    $name	= strip_tags($_REQUEST['name']);	//textbox name "txt_email"
+	$distance		= strip_tags($_REQUEST['distance']);		//textbox name "txt_email"
+	$duration	= strip_tags($_REQUEST['duration']);
+
+$host     = '188.166.24.55';
+$db       = 'jepsen6-laravel';
+$user     = 'laravel';
+$password = '5E3tYVTm6OJcxbHh';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
+
+try {
+     $conn = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+} catch (PDOException $e) {
+     echo $e->getMessage();
+}
+
+$data = [
+     'seba', 185, 2
+];
+
+$sql = "UPDATE hikes SET name=:uname, distance=:udistance , duration=:uduration WHERE id=40";
+
+$statement = $conn->prepare($sql);
+
+if($statement->execute(array(	':uname'	=>$name, 
+':udistance'	=>$distance, 
+':uduration'=>$duration))) {
+  echo "Post updated successfully!";
+}
+
+
 }
 ///////////////////HTML////////////////
 ?>
@@ -46,7 +49,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">   
-			<center><h2>NewHike Page</h2></center>
+			<center><h2>Update Page</h2></center>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
 				<label class="col-sm-3 control-label">name</label>
@@ -55,7 +58,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 				</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-3 control-label">distance</label>
+				<label class="col-sm-3 control-label"></label>
 				<div class="col-sm-6">
 				<input type="text" name="distance" class="form-control" placeholder="enter distance" />
 				</div>
@@ -68,7 +71,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_add" class="btn btn-primary " value="ADD">
+				<input type="submit"  name="btn_update" class="btn btn-primary " value="update">
 				</div>
 				</div>
 				<div class="form-group">
