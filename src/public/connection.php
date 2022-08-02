@@ -2,7 +2,7 @@
 <?php
 $db_host="188.166.24.55"; //localhost server 
 $db_user="laravel";	//database username
-$db_password="5E3tYVTm6OJcxbHh";	//database password   
+$db_password="5E3tYVTm6OJcxbHh"; //database password
 $db_name="jepsen6-laravel";	//database name
 
 try
