@@ -44,5 +44,20 @@ class User
             return false;
         }
     }
+
+    //Login User
+    public function login($firstnameOrEmail, $password)
+    {
+        $row = $this->findUserByEmailOrFirstname($firstnameOrEmail, $password);
+
+        if ($row == false) return false;
+
+        $hashedPassword = $row->password;
+        if (password_verify($password, $hashedPassword)){
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
 

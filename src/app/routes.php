@@ -14,10 +14,11 @@ $routes = [
         '/hikes' => 'app/views/hikes.php',
         '/login' => 'app/views/login.php',
         '/register' => 'app/views/register.php',
-        '/welcome' => 'app/views/welcome.php',
+        '/logout' => 'app/controllers/Users.php?q=logout',
     ],
     // Routes de la méthode POST
     'POST' => [
-        '/register' => 'app/controllers/Users.php'
+        '/register' => 'app/controllers/Users.php',
+        '/login' => 'app/controllers/Users.php',
     ],
 ];

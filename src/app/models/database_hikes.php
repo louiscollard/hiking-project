@@ -7,7 +7,7 @@ class databaseHikes extends Database
     public function getAllHikes()
     {
         $statement = $this->query("SELECT * FROM hikes");
-        $hikes =[];
+        $hikes = [];
         while($row = $statement->fetch()) {
             $hike = [
                 "Name" => $row["name"],

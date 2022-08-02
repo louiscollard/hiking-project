@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,8 +39,13 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <button type="button" class="btn btn-success"><a href="../login">Login</a></button>
-                    <button type="button" class="btn btn-outline-success"><a href="../register">Register</a></button>
+                    <?php if(isset($_SESSION['firstname'])) : ?>
+                        <button type="button" class="btn btn-success"><a href="../login">Login</a></button>
+                        <button type="button" class="btn btn-outline-success"><a href="../register">Register</a></button>
+                    <?php else: ?>
+                        <button type="button" class="btn btn-success"><a href="../home"><?php echo $_SESSION['firstname']?></a></button>
+                        <button type="button" class="btn btn-outline-success"><a href="../logout?q=logout">Logout</a></button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>

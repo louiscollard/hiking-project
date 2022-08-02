@@ -58,6 +58,57 @@ class Users
             die('Something went wrong');
         }
     }
+
+    public function login()
+    {
+        //Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+        //Init data
+        $data = [
+            "firstname/email" => trim($_POST['firstname/email']),
+            "password" => trim($_POST['password'])
+        ];
+
+        //Validate Inputs
+        if(empty($data['firstname/email']) || empty($data['password'])){
+            flash("login", "Please fill out all inputs");
+            redirect("login");
+            exit();
+        }
+
+        //Check for firstname/email
+        if($this->userModel->findUserByEmailOrFirstname($data['firstname/email'], $data['password'])){
+            // User Found
+            $loggedInUser = $this->userModel->login($data['firstname/email'], $data['password']);
+            if ($loggedInUser){
+                $this->createUserSession($loggedInUser);
+            } else {
+                flash('login', 'Password Incorrect');
+                redirect('login');
+            }
+        } else {
+            flash('login', 'No user found');
+            redirect('login');
+        }
+
+
+    }
+
+    public function createUserSession($user)
+    {
+        $_SESSION['firstname'] = $user->firstname;
+        $_SESSION['email'] = $user->email;
+        redirect('home');
+    }
+
+    public function logout($user)
+    {
+        unset($_SESSION['firstname']);
+        unset($_SESSION['email']);
+        session_destroy();
+        redirect('home');
+    }
 }
 
 $init = new Users;
@@ -68,7 +119,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         case 'register':
             $init->register();
             break;
+        case 'login':
+            $init->login();
+            break;
         default:
-            redirect("../views/home");
+            redirect("home");
+    }
+} else {
+    switch ($_GET['q']){
+        case 'logout' :
+            $init->logout();
+            break;
+        default :
+            redirect('home');
     }
 }

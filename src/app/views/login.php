@@ -1,76 +1,6 @@
 <?php
-session_start();
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once "/application/app/models/Database.php";
-
-$db = new Database();
-
-if(isset($_SESSION["user_login"]))	//check condition user login not direct back to index.php page
-{
-    header("location: welcome.php");
-}
-
-if(isset($_REQUEST['btn_login']))	//button name is "btn_login"
-{
-    $username	=strip_tags($_REQUEST["txt_username_email"]);	//textbox name "txt_username_email"
-    $email		=strip_tags($_REQUEST["txt_username_email"]);	//textbox name "txt_username_email"
-    $password	=strip_tags($_REQUEST["txt_password"]);			//textbox name "txt_password"
-
-    if(empty($username)){
-        $errorMsg[]="please enter username or email";	//check "username/email" textbox not empty
-    }
-    else if(empty($email)){
-        $errorMsg[]="please enter username or email";	//check "username/email" textbox not empty
-    }
-    else if(empty($password)){
-        $errorMsg[]="please enter password";	//check "passowrd" textbox not empty
-    }
-    else
-    {
-        try
-        {
-            $select_stmt=$db->getDatabase()->prepare("SELECT * FROM users WHERE firstname=:uname OR email=:uemail"); //sql select query
-            $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));	//execute query with bind parameter
-            $row=$select_stmt->fetch(PDO::FETCH_ASSOC);
-
-            if($select_stmt->rowCount() > 0)	//check condition database record greater zero after continue
-            {
-                if($username==$row["firstname"] OR $email==$row["email"]) //check condition user taypable "username or email" are both match from database "username or email" after continue
-                {
-                    if(password_verify($password, $row["password"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
-                    {
-                        $_SESSION["user_login"] = $row["id"];	//session name is "user_login"
-                        $loginMsg = "Successfully Login...";		//user login success message
-                        header("refresh:1; welcome");			//refresh 2 second after redirect to "welcome.php" page
-                    }
-                    else
-                    {
-                        $errorMsg[]="wrong password";
-                    }
-                }
-                else
-                {
-                    $errorMsg[]="wrong username or email";
-                }
-            }
-            else
-            {
-                $errorMsg[]="wrong username or email";
-            }
-        }
-        catch(PDOException $e)
-        {
-            $e->getMessage();
-        }
-    }
-}
-
-
 include "/application/app/views/includes/header.php";
+include_once "/application/app/helpers/session_helper.php";
 ?>
 
 <div class="wrapper">
@@ -78,42 +8,23 @@ include "/application/app/views/includes/header.php";
     <div class="container">
 
         <div class="col-lg-12">
-
-            <?php
-            if(isset($errorMsg))
-            {
-                foreach($errorMsg as $error)
-                {
-                    ?>
-                    <div class="alert alert-danger">
-                        <strong><?php echo $error; ?></strong>
-                    </div>
-                    <?php
-                }
-            }
-            if(isset($loginMsg))
-            {
-                ?>
-                <div class="alert alert-success">
-                    <strong><?php echo $loginMsg; ?></strong>
-                </div>
-                <?php
-            }
-            ?>
             <h2>Login Page</h2>
-            <form method="post" class="form-horizontal">
 
+            <?php flash("login")?>
+
+            <form method="post" class="form-horizontal" action="/login">
+                <input type="hidden" name="type" value="login">
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Username or Email</label>
                     <div class="col-sm-6">
-                        <input type="text" name="txt_username_email" class="form-control" placeholder="enter username or email" />
+                        <input type="text" name="firstname/email" class="form-control" placeholder="Enter an username or email" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Password</label>
                     <div class="col-sm-6">
-                        <input type="password" name="txt_password" class="form-control" placeholder="enter passowrd" />
+                        <input type="password" name="password" class="form-control" placeholder="Enter your password" />
                     </div>
                 </div>
 
