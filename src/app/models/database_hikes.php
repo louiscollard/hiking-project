@@ -1,12 +1,12 @@
 <?php
 
-include_once("database_connection.php");
+include_once("Database.php");
 
-class databaseHikes extends databaseConnection
+class databaseHikes extends Database
 {
     public function getAllHikes()
     {
-        $statement = $this->getDatabase()->query("SELECT * FROM hikes");
+        $statement = $this->query("SELECT * FROM hikes");
         $hikes =[];
         while($row = $statement->fetch()) {
             $hike = [
