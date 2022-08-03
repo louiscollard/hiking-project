@@ -26,20 +26,12 @@ if(isset($_REQUEST['btn_delete'])) //button name "btn_register"
 	}
 	
 }
-
+include '../app/views/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">				
-</head>
-	<body>
 	<div class="wrapper">
 	<div class="container">
-		<div class="col-lg-12">   
-			<center><h2>DELETE Page</h2></center>
+		<div class="col-lg-12">
+			<h2>DELETE Page</h2>
 			<form method="post" class="form-horizontal")>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
@@ -48,12 +40,11 @@ if(isset($_REQUEST['btn_delete'])) //button name "btn_register"
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				Want to DELETE this hike ? ;)<a href="homepage.php"><p class="text-info"> All hikes page</p></a>		
+				Want to DELETE this hike ? ;)<a href="/home"><p class="text-info"> All hikes page</p></a>
 				</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	</div>
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>

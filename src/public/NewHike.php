@@ -52,15 +52,9 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 		}
 	}
 }
+
+include '../app/views/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">				
-</head>
-	<body>
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">
@@ -85,7 +79,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
         <?php
 		}
 		?>   
-			<center><h2>NewHikes Page</h2></center>
+			<h2>NewHikes Page</h2>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Name</label>
@@ -102,7 +96,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Duration</label>
 				<div class="col-sm-6">
-				<input type="password" name="txt_password" class="form-control" placeholder="enter duration" />
+				<input type="text" name="txt_password" class="form-control" placeholder="enter duration" />
 				</div>
 				</div>
 				<div class="form-group">
@@ -112,12 +106,11 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				You have already add? <a href="homepage.php"><p class="text-info">Back</p></a>		
+				You have already add? <a href="/login"><p class="text-info">Back</p></a>
 				</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	</div>
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>

@@ -17,14 +17,6 @@ $hikes = new databaseHikes();
             </div>
         </div>
     </section>
-    <!--<section class="container-xl d-flex justify-content-center flex-column mb-3">
-        <h1>Find a hike!</h1>
-        <form class="d-flex " role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <img src="https://images.unsplash.com/photo-1599423423927-a2c777b40faa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="img-fluid" alt="hiking">
-    </section>-->
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -35,10 +27,11 @@ $hikes = new databaseHikes();
                         <div class="card-body">
                             <h4 class="card-text"><?php echo $hike["Name"]?></h4>
                             <p class="card-text"><?php echo $hike["Description"]?></p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex">
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                             </div>
+                            <a href="" class="btn btn-success">Learn More</a>
                         </div>
                     </div>
                 </div>

@@ -1,22 +1,11 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-	
-</head>
-
-	<body>
-	
-	
-
+<?php
+include '../app/views/includes/header.php'
+?>
 	<div class="wrapper">
 	<div class="container">
 			
 		<div class="col-lg-12">
-			<center>
+
 				<h2>
 				<?php
 				
@@ -26,7 +15,7 @@
 
 				if(!isset($_SESSION['user_login']))	//check unauthorize user not access in "welcome.php" page
 				{
-					header("location: index.php");
+					header("location: /home");
 				}
 				
 				$id = $_SESSION['user_login'];
@@ -45,13 +34,9 @@
 				}
 				?>
 				</h2>
-					<a href="logout.php">Logout</a>
-			</center>
-			
+					<a href="/logout">Logout</a>
 		</div>
 		
 	</div>	
 	</div>
-										
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>

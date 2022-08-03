@@ -36,16 +36,8 @@ if($statement->execute(array(	':uname'	=>$name,
 
 
 }
-///////////////////HTML////////////////
+include '../app/views/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">				
-</head>
-	<body>
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">   
@@ -76,12 +68,11 @@ if($statement->execute(array(	':uname'	=>$name,
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				Want to add this hike ? ;)<a href="homepage.php"><p class="text-info"> All hikes page</p></a>		
+				Want to add this hike ? ;)<a href="/home"><p class="text-info"> All hikes page</p></a>
 				</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	</div>
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>
