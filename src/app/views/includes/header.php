@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,7 +38,7 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <?php if(isset($_SESSION['user_login'])) : ?>
-                        <a class="btn btn-success" href="/home"><?php echo $row["firstname"]?></a>
+                        <a class="btn btn-success" href="/home"><?php echo "My page"?></a>
                         <a class="btn btn-outline-success" href="/logout">Logout</a>
                     <?php else: ?>
                         <a class="btn btn-success" href="/login">Login</a>

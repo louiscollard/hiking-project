@@ -28,37 +28,36 @@ $sql = "UPDATE hikes SET name=:uname, distance=:udistance , duration=:uduration 
 
 $statement = $conn->prepare($sql);
 
-if($statement->execute(array(	':uname'	=>$name, 
-':udistance'	=>$distance, 
+if($statement->execute(array(	':uname'	=>$name,
+':udistance'	=>$distance,
 ':uduration'=>$duration))) {
   echo "Post updated successfully!";
 }
-
 
 }
 include '../app/views/includes/header.php';
 ?>
 	<div class="wrapper">
 	<div class="container">
-		<div class="col-lg-12">   
+		<div class="col-lg-12">
 			<center><h2>Update Page</h2></center>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
-				<label class="col-sm-3 control-label">name</label>
+				<label class="col-sm-3 control-label">Name</label>
 				<div class="col-sm-6">
-				<input type="text" name="name" class="form-control" placeholder="enter name" />
+				<input type="text" name="name" class="form-control" placeholder="Enter name" />
 				</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-3 control-label"></label>
+				<label class="col-sm-3 control-label">Distance</label>
 				<div class="col-sm-6">
-				<input type="text" name="distance" class="form-control" placeholder="enter distance" />
+				<input type="text" name="distance" class="form-control" placeholder="Enter distance" />
 				</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-3 control-label">duration</label>
+				<label class="col-sm-3 control-label">Duration</label>
 				<div class="col-sm-6">
-				<input type="text" name="duration" class="form-control" placeholder="enter duration" />
+				<input type="text" name="duration" class="form-control" placeholder="Enter duration for the hike" />
 				</div>
 				</div>
 				<div class="form-group">
