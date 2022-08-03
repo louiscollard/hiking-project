@@ -34,8 +34,10 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-outline-success">Register</button>
+                <a href="login.php">
+                    <button type="button" class="btn btn-success" ><a href="login.php">Login</button>
+                    <a href="register.php">
+                    <button type="button" class="btn btn-outline-success">Register </button>
                 </form>
             </div>
         </div>
