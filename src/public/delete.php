@@ -35,7 +35,7 @@ include '../app/views/includes/header.php';
 			<form method="post" class="form-horizontal")>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_delete" class="btn btn-primary " value="delete">
+				<input type="submit"  name="btn_delete" class="btn btn-danger mb-3" value="Delete">
 				</div>
 				</div>
 				<div class="form-group">

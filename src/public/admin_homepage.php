@@ -43,5 +43,4 @@ $hikes = new databaseHikes();
             </div>
         </div>
     </div>
-
-<?php include "includes/footer.php"; ?>
+<?php include "../app/views/includes/footer.php" ?>

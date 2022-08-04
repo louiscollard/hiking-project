@@ -57,12 +57,12 @@ include '../app/views/includes/header.php';
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Duration</label>
 				<div class="col-sm-6">
-				<input type="text" name="duration" class="form-control" placeholder="Enter duration for the hike" />
+				<input type="text" name="duration" class="form-control mb-3" placeholder="Enter duration for the hike" />
 				</div>
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_update" class="btn btn-primary " value="update">
+				<input type="submit"  name="btn_update" class="btn btn-success mb-3" value="Update">
 				</div>
 				</div>
 				<div class="form-group">
