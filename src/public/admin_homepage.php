@@ -13,13 +13,15 @@ $hikes = new databaseHikes();
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <img src="https://images.unsplash.com/photo-1599423423927-a2c777b40faa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="img-fluid" alt="hiking">
+                <!--<img src="https://images.unsplash.com/photo-1599423423927-a2c777b40faa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="img-fluid" alt="hiking">-->
             </div>
         </div>
     </section>
     <div class="album py-5 bg-light">
         <div class="container">
-            <a class="btn btn-success" href="/newhike">Add</a>
+            <div class="d-grid gap-2 mb-3">
+                <a class="btn btn-success" href="/newhike">ADD</a>
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php foreach ($hikes->getAllHikes() as $key => $hike) {?>
                 <div class="col">
@@ -28,11 +30,11 @@ $hikes = new databaseHikes();
                         <div class="card-body">
                             <h4 class="card-text"><?php echo $hike["Name"]?></h4>
                             <p class="card-text"><?php echo $hike["Description"]?></p>
-                            <div class="d-flex">
-                                <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
+                            <div class="d-flex mb-2">
+                                <button type="button" class="btn btn-sm btn-outline-success me-2">Tags</button>
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                             </div>
-                            <a class="btn btn-info" href="/update">Update</a>
+                            <a class="btn btn-success me-2" href="/update">Update</a>
                             <a class="btn btn-danger" href="/delete">Delete</a>
                         </div>
                     </div>

@@ -13,7 +13,7 @@ $hikes = new databaseHikes();
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <img src="https://images.unsplash.com/photo-1599423423927-a2c777b40faa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="img-fluid" alt="hiking">
+                <!--<img src="https://images.unsplash.com/photo-1599423423927-a2c777b40faa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="img-fluid" alt="hiking">-->
             </div>
         </div>
     </section>
@@ -27,11 +27,11 @@ $hikes = new databaseHikes();
                         <div class="card-body">
                             <h4 class="card-text"><?php echo $hike["Name"]?></h4>
                             <p class="card-text"><?php echo $hike["Description"]?></p>
-                            <div class="d-flex">
-                                <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
+                            <div class="d-flex mb-3">
+                                <button type="button" class="btn btn-sm btn-outline-success me-2">Tags</button>
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                             </div>
-                            <a href="/learnmore.php?q=<?php echo $hike["Id"] ?>" class="btn btn-success"><?php echo $hike["Id"]?></a>
+                            <a href="/learnmore.php?q=<?php echo $hike["Id"] ?>" class="btn btn-success">Learn More</a>
                         </div>
                     </div>
                 </div>

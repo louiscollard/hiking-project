@@ -98,12 +98,12 @@ include '../app/views/includes/header.php';
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Password</label>
 				<div class="col-sm-6">
-				<input type="password" name="txt_password" class="form-control" placeholder="enter password" />
+				<input type="password" name="txt_password" class="form-control mb-3" placeholder="enter password" />
 				</div>
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_register" class="btn btn-primary " value="Register">
+				<input type="submit"  name="btn_register" class="btn btn-success mb-3" value="Register">
 				</div>
 				</div>
 				<div class="form-group">

@@ -79,7 +79,7 @@ include '../app/views/includes/header.php';
         <?php
 		}
 		?>   
-			<h2>NewHikes Page</h2>
+			<h2>Add a hike</h2>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
 				    <label class="col-sm-3 control-label">Name</label>
@@ -117,13 +117,13 @@ include '../app/views/includes/header.php';
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-6">
-                        <input type="text" name="txt_description" class="form-control" placeholder="Enter a description" />
+                        <input type="text" name="txt_description" class="form-control mb-3" placeholder="Enter a description" />
                     </div>
                 </div>
 
 				<div class="form-group">
 				    <div class="col-sm-offset-3 col-sm-9 m-t-15">
-				        <input type="submit"  name="btn_add" class="btn btn-primary " value="ADD+">
+				        <input type="submit"  name="btn_add" class="btn btn-success mb-3" value="ADD+">
 				    </div>
 				</div>
 				<div class="form-group">
