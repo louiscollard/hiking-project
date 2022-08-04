@@ -20,7 +20,8 @@ $routes = [
         '/newhike' => '../public/NewHike.php',
         '/welcome' => '../public/welcome.php',
         '/update' => '../public/update.php',
-        '/delete' => '../public/delete.php'
+        '/delete' => '../public/delete.php',
+        //'/learnmore' => '../public/learnmore.php'
     ],
     // Routes de la méthode POST
     'POST' => [

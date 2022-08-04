@@ -10,6 +10,7 @@ class databaseHikes extends databaseConnection
         $hikes =[];
         while($row = $statement->fetch()) {
             $hike = [
+                "Id" => $row["id"],
                 "Name" => $row["name"],
                 "Description" => $row["description"],
                 "CreationDate" => $row["creation_date"],

@@ -31,7 +31,7 @@ $hikes = new databaseHikes();
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                             </div>
-                            <a href="" class="btn btn-success">Learn More</a>
+                            <a href="/learnmore.php?q=<?php echo $hike["Id"] ?>" class="btn btn-success"><?php echo $hike["Id"]?></a>
                         </div>
                     </div>
                 </div>
