@@ -38,7 +38,7 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <?php if(isset($_SESSION['user_login'])) : ?>
-                        <a class="btn btn-success me-2" href="/home"><?php echo "My page"?></a>
+                        <a class="btn btn-success me-2" href="/userhome"><?php echo "My page"?></a>
                         <a class="btn btn-outline-success" href="/logout">Logout</a>
                     <?php elseif(isset($_SESSION['admin_login'])): ?>
                         <a class="btn btn-success me-2" href="/admin"><?php echo "ADMIN page"?></a>

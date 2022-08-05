@@ -28,10 +28,10 @@ $hikes = new databaseHikes();
                             <h4 class="card-text"><?php echo $hike["Name"]?></h4>
                             <p class="card-text"><?php echo $hike["Description"]?></p>
                             <div class="d-flex mb-3">
-                                <button type="button" class="btn btn-sm btn-outline-success me-2">Tags</button>
-                                <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
+                                <button type="button" class="btn btn-sm btn-outline-success me-2">Hard</button>
+                                <button type="button" class="btn btn-sm btn-outline-success">Rock</button>
                             </div>
-                            <a href="/learnmore.php?q=<?php echo $hike["Id"] ?>" class="btn btn-success">Learn More</a>
+                            <a href="/learnmore?q=<?php echo $hike["Id"] ?>" class="btn btn-success">Learn More</a>
                         </div>
                     </div>
                 </div>

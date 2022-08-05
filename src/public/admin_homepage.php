@@ -20,7 +20,7 @@ $hikes = new databaseHikes();
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="d-grid gap-2 mb-3">
-                <a class="btn btn-success" href="/newhike">ADD</a>
+                <a class="btn btn-success" href="/newhike?id=<?php echo $_SESSION['user_login'] ?>">ADD</a>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php foreach ($hikes->getAllHikes() as $key => $hike) {?>
@@ -34,8 +34,8 @@ $hikes = new databaseHikes();
                                 <button type="button" class="btn btn-sm btn-outline-success me-2">Tags</button>
                                 <button type="button" class="btn btn-sm btn-outline-success">Tags</button>
                             </div>
-                            <a class="btn btn-success me-2" href="/update">Update</a>
-                            <a class="btn btn-danger" href="/delete">Delete</a>
+                                <a href="/delete?q=<?php echo $hike["Id"] ?>" class="btn btn-danger me-2">Delete</a>
+                                <a href="/update?q=<?php echo $hike["Id"]?>&FormName=<?php echo $hike["Name"]?>&Formcrea=<?php echo $hike["CreationDate"]?>&Formdesc=<?php echo $hike["Description"]?>&Formdist=<?php echo $hike["Distance"]?>&Formdur=<?php echo $hike["Duration"]?>&Formelevation=<?php echo $hike["Elevation"]?>" class="btn btn-success">Update</a>
                         </div>
                     </div>
                 </div>

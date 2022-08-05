@@ -22,6 +22,27 @@ class databaseHikes extends databaseConnection
         }
         return $hikes;
     }
+
+    public function getAllHikesPersoUser($sessionUser)
+    {
+        $statement = $this->getDatabase()->query("SELECT * FROM hikes WHERE user_id=$sessionUser");
+        $hikes =[];
+        while($row = $statement->fetch()) {
+            $hike = [
+                "Id" => $row["id"],
+                "Name" => $row["name"],
+                "Description" => $row["description"],
+                "CreationDate" => $row["creation_date"],
+                "Distance" => $row["distance"],
+                "Duration" => $row["duration"],
+                "Elevation" => $row["elevation_gain"]
+            ];
+            $hikes[] = $hike;
+        }
+        return $hikes;
+    }
+
+
     public function getOneHikeName($hikeId)
     {
 

@@ -37,12 +37,17 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 			$select_stmt->execute(array(':uname'=>$Name, ':udistance'=>$Distance)); //execute query
 			$row=$select_stmt->fetch(PDO::FETCH_ASSOC);	
 							
-				$insert_stmt=$db->prepare("INSERT INTO hikes (name,distance,duration) VALUES
-																(:uname,:udistance,:uduration)"); 		//sql insert query					
+				$insert_stmt=$db->prepare("INSERT INTO hikes (name,creation_date,distance,duration,elevation_gain,description,user_id) VALUES
+																(:uname,:ucreation_date,:udistance,:uduration,:uelevation_gain,:udescription,:uuser_id)"); 		//sql insert query
 				
 				if($insert_stmt->execute(array(	':uname'	=>$Name,
+                                                ':ucreation_date' => $CreationDate,
 												':udistance'=>$Distance,
-												':uduration'=>$Duration))){								
+												':uduration'=>$Duration,
+                                                ':uelevation_gain' => $Elevation_gain,
+                                                ':udescription' => $description,
+                                                ':uuser_id' => $_GET['id']
+                                            ))){
 					$registerMsg="ADD Successfully..... Please Click On Login Account Link"; //execute query success message
 			}
 		}

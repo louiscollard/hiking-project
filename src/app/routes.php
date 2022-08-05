@@ -21,7 +21,8 @@ $routes = [
         '/welcome' => '../public/welcome.php',
         '/update' => '../public/update.php',
         '/delete' => '../public/delete.php',
-        //'/learnmore' => '../public/learnmore.php'
+        '/learnmore' => '../public/learnmore.php',
+        '/userhome' => '../public/user_homepage.php'
     ],
     // Routes de la méthode POST
     'POST' => [

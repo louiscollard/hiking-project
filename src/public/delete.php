@@ -12,13 +12,13 @@ if(isset($_REQUEST['btn_delete'])) //button name "btn_register"
 			$password);
 	// set the PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	// prepare sql and bind parameters
-		$stmt = $conn->prepare("DELETE FROM hikes WHERE id=40"); 
+        $ID=$_GET["q"];
+        // prepare sql and bind parameters
+        $stmt = $conn->prepare("DELETE FROM hikes WHERE id=$ID");
 
 	// insert a row
 		$stmt->execute();
-		echo " Records DELETED successfully";
+		$deleteMsg = " Records DELETED successfully";
 	}
 	catch(PDOException $e)
 	{
@@ -31,6 +31,27 @@ include '../app/views/includes/header.php';
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">
+            <?php
+            if(isset($errorMsg))
+            {
+                foreach($errorMsg as $error)
+                {
+                    ?>
+                    <div class="alert alert-danger">
+                        <strong>WRONG ! <?php echo $error; ?></strong>
+                    </div>
+                    <?php
+                }
+            }
+            if(isset($deleteMsg))
+            {
+                ?>
+                <div class="alert alert-success">
+                    <strong><?php echo $deleteMsg; ?></strong>
+                </div>
+                <?php
+            }
+            ?>
 			<h2>DELETE Page</h2>
 			<form method="post" class="form-horizontal")>
 				<div class="form-group">
