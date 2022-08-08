@@ -19,5 +19,5 @@ However, you are going to find differents hikes from different people so you can
 
 In colaboration with:
 
-- [Palacios97] (https://github.com/Palacios97)
+- [Palacios97](https://github.com/Palacios97)
 - [Sebatien voos](https://github.com/VOOSsebastien)
