@@ -9,13 +9,13 @@ Keep in mind that it will be required to create an account so we can take care o
 
 However, you are going to find differents hikes from different people so you can check what they share to the page.
 
-![](../src/images/homepage.png)
+![](./src/images/homepage.png)
 
-![](../src/images/loginprocess.png)
+![](./src/images/loginprocess.png)
 
-![](<../src/images/welcomemessage.png)
+![](./src/images/welcomemessage.png)
 
-![](<../src/images/profileapp.png)
+![](./src/images/profileapp.png)
 
 In colaboration with:
 
