@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,18 +13,18 @@
     <title>Hiking-Project</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Hiking</a>
+            <a class="navbar-brand" href="/home">Hiking Project</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Hikes</a>
+                        <a class="nav-link active" aria-current="page" href="/home">Hikes</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
@@ -31,11 +34,19 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
                 <form class="d-flex" role="search">
-                    <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-outline-success">Register</button>
+                    <?php if(isset($_SESSION['user_login'])) : ?>
+                        <a class="btn btn-success me-2" href="/userhome"><?php echo "My page"?></a>
+                        <a class="btn btn-outline-success" href="/logout">Logout</a>
+                    <?php elseif(isset($_SESSION['admin_login'])): ?>
+                        <a class="btn btn-success me-2" href="/admin"><?php echo "ADMIN page"?></a>
+                        <a class="btn btn-outline-success" href="/logout">Logout</a>
+                    <?php else:?>
+                        <a class="btn btn-success me-2" href="/login">Login</a>
+                        <a class="btn btn-outline-success" href="/register">Register</a>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>

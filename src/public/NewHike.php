@@ -10,7 +10,7 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 	$Elevation_gain		= strip_tags($_REQUEST['txt_Elevation_gain']);		//textbox name "txt_email"
 	$description	= strip_tags($_REQUEST['txt_description']);	//textbox name "txt_password"
 	if(empty($Name)){
-		$errorMsg[]="Please enter Name";	//check username textbox not empty 
+		$errorMsg[]="Please enter Name";	//check username textbox not empty
 	}
 	else if(empty($CreationDate)){
 		$errorMsg[]="Please enter CreationDate";	//check email textbox not empty 
@@ -32,17 +32,22 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 	{	
 		try
 		{	
-			$select_stmt=$db->prepare("SELECT Name,CreationDate, Distance,Duration,Elevation_gain,description FROM Hikes 
-										WHERE Name=:uname OR Distance=:udistance"); // sql select query
-			$select_stmt->execute(array(':uname'=>$Name, ':udistance'=>$Distance)); //execute query 
+			$select_stmt=$db->prepare("SELECT name,creation_date,distance,duration,elevation_gain,description FROM hikes
+										WHERE name=:uname OR distance=:udistance"); // sql select query
+			$select_stmt->execute(array(':uname'=>$Name, ':udistance'=>$Distance)); //execute query
 			$row=$select_stmt->fetch(PDO::FETCH_ASSOC);	
 							
-				$insert_stmt=$db->prepare("INSERT INTO Hikes (Name,Distance,Duration) VALUES
-																(:uname,:udistance,:uduration)"); 		//sql insert query					
+				$insert_stmt=$db->prepare("INSERT INTO hikes (name,creation_date,distance,duration,elevation_gain,description,user_id) VALUES
+																(:uname,:ucreation_date,:udistance,:uduration,:uelevation_gain,:udescription,:uuser_id)"); 		//sql insert query
 				
-				if($insert_stmt->execute(array(	':uname'	=>$Name, 
-												':udistance'	=>$Distance, 
-												':uduration'=>$Duration))){								
+				if($insert_stmt->execute(array(	':uname'	=>$Name,
+                                                ':ucreation_date' => $CreationDate,
+												':udistance'=>$Distance,
+												':uduration'=>$Duration,
+                                                ':uelevation_gain' => $Elevation_gain,
+                                                ':udescription' => $description,
+                                                ':uuser_id' => $_GET['id']
+                                            ))){
 					$registerMsg="ADD Successfully..... Please Click On Login Account Link"; //execute query success message
 			}
 		}
@@ -52,15 +57,9 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
 		}
 	}
 }
+
+include '../app/views/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">				
-</head>
-	<body>
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">
@@ -85,39 +84,60 @@ if(isset($_REQUEST['btn_add'])) //button name "btn_register"
         <?php
 		}
 		?>   
-			<center><h2>NewHikes Page</h2></center>
+			<h2>Add a hike</h2>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
-				<label class="col-sm-3 control-label">Name</label>
-				<div class="col-sm-6">
-				<input type="text" name="txt_username" class="form-control" placeholder="enter hike's name" />
-				</div>
+				    <label class="col-sm-3 control-label">Name</label>
+				    <div class="col-sm-6">
+				        <input type="text" name="txt_name" class="form-control" placeholder="Enter hike's name" />
+				    </div>
+                </div>
+				<div class="form-group">
+				    <label class="col-sm-3 control-label">Creation date</label>
+				    <div class="col-sm-6">
+				        <input type="text" name="txt_CreationDate" class="form-control" placeholder="Enter a date" />
+				    </div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-3 control-label">Distance</label>
-				<div class="col-sm-6">
-				<input type="text" name="txt_email" class="form-control" placeholder="enter distance" />
+				    <label class="col-sm-3 control-label">Distance</label>
+                    <div class="col-sm-6">
+				        <input type="text" name="txt_Distance" class="form-control" placeholder="Enter a distance" />
+				    </div>
 				</div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Duration</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="txt_Duration" class="form-control" placeholder="Enter a duration for the hike" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Elevation gain</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="txt_Elevation_gain" class="form-control" placeholder="Enter an elevation" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="txt_description" class="form-control mb-3" placeholder="Enter a description" />
+                    </div>
+                </div>
+
+				<div class="form-group">
+				    <div class="col-sm-offset-3 col-sm-9 m-t-15">
+				        <input type="submit"  name="btn_add" class="btn btn-success mb-3" value="ADD+">
+				    </div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-3 control-label">Duration</label>
-				<div class="col-sm-6">
-				<input type="password" name="txt_password" class="form-control" placeholder="enter duration" />
-				</div>
-				</div>
-				<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_add" class="btn btn-primary " value="ADD+">
-				</div>
-				</div>
-				<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				You have already add? <a href="homepage.php"><p class="text-info">Back</p></a>		
-				</div>
+				    <div class="col-sm-offset-3 col-sm-9 m-t-15">
+                    You have already add? <a href="/login"><p class="text-info">Back</p></a>
+				    </div>
 				</div>
 			</form>
 		</div>
 	</div>
 	</div>
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>

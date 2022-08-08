@@ -55,15 +55,8 @@ if(isset($_REQUEST['btn_register'])) //button name "btn_register"
 		}
 	}
 }
+include '../app/views/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">				
-</head>
-	<body>
 	<div class="wrapper">
 	<div class="container">
 		<div class="col-lg-12">
@@ -88,7 +81,7 @@ if(isset($_REQUEST['btn_register'])) //button name "btn_register"
         <?php
 		}
 		?>   
-			<center><h2>Register Page</h2></center>
+			<h2>Register Page</h2>
 			<form method="post" class="form-horizontal">
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Username</label>
@@ -105,22 +98,21 @@ if(isset($_REQUEST['btn_register'])) //button name "btn_register"
 				<div class="form-group">
 				<label class="col-sm-3 control-label">Password</label>
 				<div class="col-sm-6">
-				<input type="password" name="txt_password" class="form-control" placeholder="enter passowrd" />
+				<input type="password" name="txt_password" class="form-control mb-3" placeholder="enter password" />
 				</div>
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				<input type="submit"  name="btn_register" class="btn btn-primary " value="Register">
+				<input type="submit"  name="btn_register" class="btn btn-success mb-3" value="Register">
 				</div>
 				</div>
 				<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9 m-t-15">
-				You have a account register here? <a href="index.php"><p class="text-info">Login Account</p></a>		
+				You have a account register here? <a href="/login"><p class="text-info">Login Account</p></a>
 				</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	</div>
-	</body>
-</html>
+<?php include '../app/views/includes/footer.php' ?>
